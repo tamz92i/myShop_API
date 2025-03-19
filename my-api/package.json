@@ -1,0 +1,33 @@
+{
+  "name": "my-api",
+  "version": "1.0.0",
+  "description": "API for an online store, serving as a bridge between frontend and backend/database.",
+  "main": "src/app.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.0",
+    "ts-node": "^9.0.0",
+    "jest": "^26.0.0",
+    "@types/jest": "^26.0.0",
+    "@types/express": "^4.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/my-api.git"
+  },
+  "keywords": [
+    "api",
+    "express",
+    "typescript",
+    "online-store"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

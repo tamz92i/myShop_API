@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# Dossier de build/compilation
+dist/
+build/
+
+/build/
+
+# Fichiers d'environnement
+.env
+
+# Cache de tests et coverage
+coverage/
+
+# Fichiers spécifiques à macOS
+.DS_Store
+
+# Fichiers de logs
+*.log
+
+# Fichiers temporaires
+tmp/
+temp/
+
+# Dossiers et fichiers d'éditeur (ex. VS Code)
+.vscode/
+
+# Fichiers de cache de npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Fichiers système supplémentaires
+Thumbs.db
