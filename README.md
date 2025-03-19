@@ -1,4 +1,3 @@
-Collecte des informations sur l’espace de travail```markdown
 # myShop API
 
 ## Description
