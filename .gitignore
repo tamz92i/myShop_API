@@ -1,35 +1,40 @@
-# Node modules
+# Dépendances
 node_modules/
+package-lock.json
+yarn.lock
 
-# Dossier de build/compilation
+# Fichiers de build
 dist/
 build/
+*.tsbuildinfo
 
-/build/
-
-# Fichiers d'environnement
+# Variables d'environnement
 .env
+.env.local
+.env.development
+.env.test
+.env.production
 
-# Cache de tests et coverage
-coverage/
-
-# Fichiers spécifiques à macOS
-.DS_Store
-
-# Fichiers de logs
+# Logs
+logs/
 *.log
-
-# Fichiers temporaires
-tmp/
-temp/
-
-# Dossiers et fichiers d'éditeur (ex. VS Code)
-.vscode/
-
-# Fichiers de cache de npm
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Fichiers système supplémentaires
+# Couverture de tests
+coverage/
+.nyc_output/
+
+# Système
+.DS_Store
 Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Spécifique à ce projet
+db-data/
