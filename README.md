@@ -1,102 +1,101 @@
-# myShop API
+# 🛍️ myShop API
 
-## Description
+## 🌟 Description
 
-This API serves as the backend for an online store, providing endpoints for managing products and orders. It's built with Express, TypeScript, and PostgreSQL.
+Cette API sert de backend pour une boutique en ligne, fournissant des points de terminaison pour la gestion des produits et des commandes. Elle est construite avec Express, TypeScript et PostgreSQL.
 
-## Features
+## ✨ Fonctionnalités
 
--   **Products**:
-    -   Retrieve a list of all products.
-    -   Create new products.
--   **Orders**:
-    -   Retrieve a list of all orders.
-    -   Create new orders.
+-   **Produits** :
+    -   Récupérer une liste de tous les produits. 📦
+    -   Créer de nouveaux produits. ➕
+-   **Commandes** :
+    -   Récupérer une liste de toutes les commandes. 🧾
+    -   Créer de nouvelles commandes. 🛒
 
-## Technologies Used
+## 🛠️ Technologies utilisées
 
--   [Node.js](https://nodejs.org/)
--   [Express](https://expressjs.com/)
--   [TypeScript](https://www.typescriptlang.org/)
+-   [Node.js](https://nodejs.org/) : Environnement d'exécution JavaScript côté serveur.
+-   [Express](https://expressjs.com/) : Framework web pour Node.js.
+-   [TypeScript](https://www.typescriptlang.org/) : Sur-ensemble typé de JavaScript.
+-   [PostgreSQL](https://www.postgresql.org/) : Système de gestion de base de données relationnelle.
+-   [dotenv](https://github.com/motdotla/dotenv) : Pour gérer les variables d'environnement.
+-   [pg](https://node-postgres.com/) : Pour interagir avec la base de données PostgreSQL.
+
+## ⚙️ Prérequis
+
+-   [Node.js](https://nodejs.org/) (version 14 ou supérieur)
+-   [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 -   [PostgreSQL](https://www.postgresql.org/)
--   [dotenv](https://github.com/motdotla/dotenv) for managing environment variables
--   [pg](https://node-postgres.com/) for interacting with the PostgreSQL database
 
-## Prerequisites
+## 🚀 Installation
 
--   [Node.js](https://nodejs.org/) (version 14 or higher)
--   [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
--   [PostgreSQL](https://www.postgresql.org/)
-
-## Installation
-
-1.  Clone the repository:
+1.  Clonez le dépôt :
 
     ```bash
     git clone <https://github.com/tamz92i/myShop_API.git>
     cd my-api
     ```
 
-2.  Install dependencies:
+2.  Installez les dépendances :
 
     ```bash
-    npm install # or yarn install
+    npm install # ou yarn install
     ```
 
-3.  Configure the database:
+3.  Configurez la base de données :
 
-    -   Create a `.env` file in the root directory with the following variables:
+    -   Créez un fichier `.env` à la racine du projet avec les variables suivantes :
 
         ```
         DB_HOST=localhost
         DB_NAME=myshop_db
-        DB_USER=your_db_user
-        DB_PASS=your_db_password
+        DB_USER=votre_utilisateur_db
+        DB_PASS=votre_mot_de_passe_db
         DB_PORT=5432
         ```
 
-    -   Make sure PostgreSQL is running and the database specified in `.env` exists.
+    -   Assurez-vous que PostgreSQL est en cours d'exécution et que la base de données spécifiée dans `.env` existe.
 
-## Usage
+## 💻 Utilisation
 
-1.  Build the project:
+1.  Compilez le projet :
 
     ```bash
     npm run build
     ```
 
-2.  Start the server:
+2.  Démarrez le serveur :
 
     ```bash
     npm start
     ```
 
-    Alternatively, you can use the `dev` script for development, which uses `ts-node` to run the server directly from the TypeScript source:
+    Alternativement, vous pouvez utiliser le script `dev` pour le développement, qui utilise `ts-node` pour exécuter le serveur directement à partir du code source TypeScript :
 
     ```bash
     npm run dev
     ```
 
-3.  API Endpoints:
+3.  Points de terminaison de l'API :
 
-    -   `GET /api/products`: Retrieve all products.
-    -   `POST /api/products`: Create a new product.
-        -   Request body: `{ name: string, price: number, description?: string, stock?: number }`
-    -   `GET /api/orders`: Retrieve all orders.
-    -   `POST /api/orders`: Create a new order.
-        -   Request body: `{ productId: number, quantity: number, customerName: string }`
+    -   `GET /api/products` : Récupérer tous les produits.
+    -   `POST /api/products` : Créer un nouveau produit.
+        -   Corps de la requête : `{ name: string, price: number, description?: string, stock?: number }`
+    -   `GET /api/orders` : Récupérer toutes les commandes.
+    -   `POST /api/orders` : Créer une nouvelle commande.
+        -   Corps de la requête : `{ productId: number, quantity: number, customerName: string }`
 
-## Scripts
+## 🧪 Scripts
 
--   `build`: Compiles the TypeScript code to JavaScript.
--   `start`: Starts the server using the compiled JavaScript code.
--   `dev`: Starts the server using `ts-node` for development.
+-   `build` : Compile le code TypeScript en JavaScript.
+-   `start` : Démarre le serveur en utilisant le code JavaScript compilé.
+-   `dev` : Démarre le serveur en utilisant `ts-node` pour le développement.
 
-## Contributing
+## 🤝 Contribution
 
-Feel free to contribute to the project by submitting pull requests.
+N'hésitez pas à contribuer au projet en soumettant des pull requests.
 
-## License
+## 📜 Licence
 
 [MIT](https://opensource.org/licenses/MIT)
-```
