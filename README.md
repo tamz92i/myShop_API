@@ -34,7 +34,7 @@ This API serves as the backend for an online store, providing endpoints for mana
 1.  Clone the repository:
 
     ```bash
-    git clone <repository-url>
+    git clone <https://github.com/tamz92i/myShop_API.git>
     cd my-api
     ```
 
