@@ -3,18 +3,17 @@ FROM node:20 AS build
 # Définir le répertoire de travail
 WORKDIR /app
 
-# Vérifier si le package.json existe avant de le copier
-# Nous copions d'abord juste les fichiers package pour optimiser le cache Docker
-COPY package*.json ./
-
-# Vérifier si le package.json existe
-RUN ls -la
+# Copier le package.json du dossier my-api
+COPY my-api/package*.json ./
 
 # Installer toutes les dépendances (dev + prod) pour la compilation
 RUN npm install
 
-# Copier le reste des fichiers source
-COPY . .
+# Ajouter manuellement dotenv car il est utilisé mais pas déclaré dans package.json
+RUN npm install dotenv
+
+# Copier les fichiers sources du projet
+COPY my-api/ ./
 
 # Modifier db.ts pour utiliser le nom du service Docker PostgreSQL au lieu de localhost
 RUN sed -i 's/localhost/postgres/g' src/db.ts
@@ -27,11 +26,12 @@ FROM node:20
 
 WORKDIR /app
 
-# Copier package.json et package-lock.json depuis l'étape de build
+# Copier package.json depuis l'étape de build
 COPY --from=build /app/package*.json ./
 
-# Installer uniquement les dépendances de production
+# Installer dépendances de production + dotenv explicitement
 RUN npm install --omit=dev
+RUN npm install dotenv
 
 # Copier les fichiers compilés depuis l'étape de build
 COPY --from=build /app/dist ./dist
