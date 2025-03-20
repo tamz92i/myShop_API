@@ -6,8 +6,10 @@ COPY ./my-api/package*.json ./
 
 # Installer les dépendances
 RUN npm install
-# Installer les dépendances de développement
-RUN npm install dotenv @types/dotenv typescript @types/express @types/pg --save-dev
+# Installer les dépendances de développement (garder typescript et les types pour la compilation)
+RUN npm install @types/dotenv typescript @types/express @types/pg --save-dev
+# Installer dotenv comme dépendance de production
+RUN npm install dotenv --save
 
 # Copier le reste du code source
 COPY ./my-api .
