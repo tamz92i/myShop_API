@@ -3,14 +3,11 @@ FROM node:20 AS build
 # Définir le répertoire de travail
 WORKDIR /app
 
-# Copier les fichiers package.json et package-lock.json
-COPY package*.json ./
+# Vérifier où se trouve le package.json et le copier
+COPY . .
 
 # Installer toutes les dépendances (dev + prod) pour la compilation
 RUN npm install
-
-# Copier le reste du code source
-COPY . .
 
 # Modifier db.ts pour utiliser le nom du service Docker PostgreSQL au lieu de localhost
 RUN sed -i 's/localhost/postgres/g' src/db.ts
@@ -27,7 +24,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Installer uniquement les dépendances de production
-RUN npm install --only=production
+RUN npm install --production
 
 # Copier les fichiers compilés depuis l'étape de build
 COPY --from=build /app/dist ./dist
