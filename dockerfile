@@ -1,18 +1,16 @@
 FROM node:20 AS build
 
-# Copier les fichiers de dépendances
+# Définir le répertoire de travail
 WORKDIR /app
-COPY ./my-api/package*.json ./
 
-# Installer les dépendances
+# Copier les fichiers package.json et package-lock.json
+COPY package*.json ./
+
+# Installer toutes les dépendances (dev + prod) pour la compilation
 RUN npm install
-# Installer les dépendances de développement (garder typescript et les types pour la compilation)
-RUN npm install @types/dotenv typescript @types/express @types/pg --save-dev
-# Installer dotenv comme dépendance de production
-RUN npm install dotenv --save
 
 # Copier le reste du code source
-COPY ./my-api .
+COPY . .
 
 # Modifier db.ts pour utiliser le nom du service Docker PostgreSQL au lieu de localhost
 RUN sed -i 's/localhost/postgres/g' src/db.ts
@@ -20,15 +18,19 @@ RUN sed -i 's/localhost/postgres/g' src/db.ts
 # Compiler le projet TypeScript
 RUN npx tsc
 
+# Étape de production
 FROM node:20
 
 WORKDIR /app
 
-# Copier les fichiers compilés et les dépendances de production
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/package*.json ./
+# Copier package.json et package-lock.json
+COPY package*.json ./
+
 # Installer uniquement les dépendances de production
 RUN npm install --only=production
+
+# Copier les fichiers compilés depuis l'étape de build
+COPY --from=build /app/dist ./dist
 
 # Exposer le port de l'API
 EXPOSE 8080
